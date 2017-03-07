@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gluster-object
+spec:
+  containers:
+  - name: gluster-s3
+    image: gluster/gluster-object
+    securityContext: 
+      capabilities: {}
+      privileged: true
+    volumeMounts:
+    - name: glusterpath
+      mountPath: "/mnt/gluster-object"
+    - name: glusterfs-cgroup
+      mountPath: "/sys/fs/cgroup"
+      readOnly: true
+    ports:
+    - containerPort: 8080
+      hostPort: 8080
+
+  volumes:
+    - name: glusterpath
+      hostPath:
+        path: "/mnt/gluster-object"
+    - name: glusterfs-cgroup
+      hostPath:
+        path: "/sys/fs/cgroup"
