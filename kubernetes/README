@@ -1,0 +1,9 @@
+1 master - 1 minion
+
+First setup gluster volume using gluster_setup.sh ( in master)
+
+Then create pod using kubectl create -f ./pod-gluster-s3.yaml (in master)
+
+Then use gluster_s3_demo.sh to verifiy S3 GET/PUT requests. (in master)
+
+
