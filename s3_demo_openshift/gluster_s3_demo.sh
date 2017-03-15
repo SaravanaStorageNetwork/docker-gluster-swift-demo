@@ -2,12 +2,14 @@
 
 . ./util.sh
 
-#Verify GET/PUT
+# Verify GET/PUT
 desc "Get IP address of corresponding gluster-s3 pod"
 
-run "oc  get pods  -o wide  | grep glusters3 |  awk '{print \$6}'"
-ip_address=$(oc  get pods  -o wide  | grep glusters3 |  awk '{print $6}')
+# run "oc  get pods  -o wide  | grep glusters3 |  awk '{print \$6}'"
+# ip_address=$(oc  get pods  -o wide  | grep glusters3 |  awk '{print $6}')
 
+run "oc get svc   | grep glusters3   | awk '{print \$2}'"
+ip_address=$(oc get svc   | grep glusters3   | awk '{print $2}')
 
 # add s3curl.pl for testing
 export PATH=$PATH:/root/s3-curl/
