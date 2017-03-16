@@ -1,0 +1,22 @@
+{
+  "kind": "PersistentVolume",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "glusterfs-fa871d1c",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "capacity": {
+      "storage": "1Gi"
+    },
+    "glusterfs": {
+      "endpoints": "glusterfs-cluster",
+      "path": "tv1"
+    },
+    "accessModes": [
+      "ReadWriteMany"
+    ],
+    "persistentVolumeReclaimPolicy": "Retain"
+  },
+  "status": {}
+}

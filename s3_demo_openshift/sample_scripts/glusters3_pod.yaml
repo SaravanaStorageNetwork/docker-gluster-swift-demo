@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: glusters3
+  labels:
+    name: glusters3
+spec:
+  containers:
+  - name: glusters3
+    image: gluster/gluster-object
+    securityContext: 
+      capabilities: {}
+      privileged: true
+    ports:
+    - name: gluster
+      containerPort: 8080
+    volumeMounts:
+    - name: gluster-vol1
+      mountPath: /mnt/gluster-object/tv1
+    - name: glusterfs-cgroup
+      mountPath: "/sys/fs/cgroup"
+      readOnly: true
+  volumes:
+  - name: glusterfs-cgroup
+    hostPath:
+      path: "/sys/fs/cgroup"
+  - name: gluster-vol1
+    persistentVolumeClaim:
+      claimName: glusterfs-claim
