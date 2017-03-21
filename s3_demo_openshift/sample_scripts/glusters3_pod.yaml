@@ -8,6 +8,9 @@ spec:
   containers:
   - name: glusters3
     image: gluster/gluster-object
+    env:
+    - name: GLUSTER_VOLUMES
+      value: "tv1"
     securityContext: 
       capabilities: {}
       privileged: true
