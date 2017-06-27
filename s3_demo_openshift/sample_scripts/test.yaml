@@ -30,3 +30,5 @@ spec:
   - name: gluster-vol1
     persistentVolumeClaim:
       claimName: glusterfs-claim
+        hellow
+
